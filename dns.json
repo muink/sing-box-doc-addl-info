@@ -1,0 +1,20 @@
+{
+	"dns": {
+		"servers": [],
+		"rules": [],
+		"final": "",
+		"strategy": "",
+		"disable_cache": false,
+		"disable_expire": false,
+		"independent_cache": false,
+		// 不建议启用, 因为会有多个域名共享同个 IP 的情况 (虚拟主机)
+		// It is not recommended to enable this because multiple domains may share the same IP (VPS)
+		"reverse_mapping": false,
+		// EDNS Client Subnet, 接受 CIDR
+		// EDNS Client Subnet, CIDR available
+		"client_subnet": "",
+		// 不建议使用, 会影响基于 DNS 解析结果来工作的程式
+		// Not recommended, it will affect programs that work based on DNS resolution results
+		"fakeip": {}
+	}
+}
