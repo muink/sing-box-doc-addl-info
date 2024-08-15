@@ -1,0 +1,35 @@
+{
+	"inbounds": [
+		{
+			"type": "direct",
+			"tag": "direct-in",
+			// 覆写入站连接的目的地地址
+			// Overwrite the destination address for inbound connections
+			"override_address": "1.0.0.1",
+			// 覆写入站连接的目的地端口
+			// Overwrite the destination port for inbound connections
+			"override_port": 53
+		},
+		{
+			"type": "mixed",
+			"tag": "mixed-in",
+			// Only supported on Linux, Android, Windows, and macOS.
+			// 启动时自动设置系统代理, 停止时自动清理
+			// Automatically set system proxy configuration when start and clean up when stop.
+			// 要在无特权的 Android 和 iOS 上工作, 请改用 tun.platform.http_proxy
+			// To work on Android and Apple platforms without privileges, use tun.platform.http_proxy instead.
+			"set_system_proxy": false
+		},
+		{
+			"type": "redirect",
+			"tag": "redirect-in"
+			// Only supported on Linux and macOS.
+		},
+		{
+			"type": "tproxy",
+			"tag": "tproxy-in",
+			"network": "udp"
+			// Only supported on Linux.
+		},
+	]
+}
