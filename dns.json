@@ -1,6 +1,25 @@
 {
 	"dns": {
-		"servers": [],
+		"servers": [
+			{
+				"tag": "",
+				// udp://208.67.222.222:5353
+				// tls://dns.google // DoT
+				// quic://dns.adguard.com // DoQ
+				// https://dns.google/dns-query // DoH
+				// h3://dns.alidns.com/dns-query // DoH3
+				"address": "",
+				// 如果 `address` 包含域名则为必填项
+				// Required if `address` contains domain
+				"address_resolver": "",
+				"address_strategy": "",
+				"strategy": "",
+				"detour": "",
+				// EDNS Client Subnet, 接受 CIDR
+				// EDNS Client Subnet, CIDR available
+				"client_subnet": ""
+			}
+		],
 		"rules": [],
 		"final": "",
 		"strategy": "",
