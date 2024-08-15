@@ -1,0 +1,60 @@
+{
+	"outbounds": [
+		{
+			"type": "direct",
+			"tag": "direct-out",
+			// 覆写出站连接的目的地地址
+			// Overwrite the destination address for outbound connections
+			"override_address": "1.0.0.1",
+			// 覆写出站连接的目的地端口
+			// Overwrite the destination port for outbound connections
+			"override_port": 53,
+			// 为出站连接写入 haproxy Proxy Protocol 定义的 header 信息. 值为 1 或 2
+			// Write haproxy Proxy Protocol in the connection header. value can be 1 or 2
+			"proxy_protocol": 0
+		},
+		{
+			"type": "dns",
+			"tag": "dns-out"
+			// dns 出站是一个内部 DNS 服务器
+			// DNS 请求会在内部交由 { "dns": { ... } } 处理
+			// dns outbound is a internal DNS server
+			// DNS requests are handled internally by the { "dns": { ... } }
+		},
+		{
+			"type": "selector",
+			"tag": "select",
+			"outbounds": [
+				"proxy-a",
+				"proxy-b",
+				"proxy-c"
+			],
+			"default": "proxy-c",
+			// 当选定的出站发生更改时, 中断现有连接
+			// Interrupt existing connections when the selected outbound has changed
+			"interrupt_exist_connections": false
+		},
+		{
+			"type": "urltest",
+			"tag": "auto",
+			"outbounds": [
+				"proxy-a",
+				"proxy-b",
+				"proxy-c"
+			],
+			// 要测试的 URL
+			// The URL to test
+			"url": "",
+			// 测试周期
+			// The test interval
+			"interval": "",
+			"tolerance": 0,
+			// 空闲超时. 当 URLTest 空闲一定时间后, 预定的测试将会暂停
+			// The idle timeout. When URLTest is idle for a certain period of time, the scheduled delay test will be paused
+			"idle_timeout": "",
+			// 当选定的出站发生更改时, 中断现有连接
+			// Interrupt existing connections when the selected outbound has changed
+			"interrupt_exist_connections": false
+		}
+	]
+}
