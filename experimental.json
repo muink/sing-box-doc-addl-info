@@ -1,0 +1,24 @@
+{
+	"experimental": {
+		"cache_file": {
+			// 绝对路径或相对路径. 相对路径起始于 -D config_directory
+			// Absolute or relative path. Relative paths start with -D config_directory
+			"path": ""
+		},
+		"clash_api": {
+			// 127.0.0.1 or [::1] 监听本机回环, 仅能被本机用户访问
+			// 0.0.0.0 or [::] 监听所有网卡, 来自这些网卡的用户可访问
+			// ?.?.?.? or [????::????] 监听特定的网卡, 来自此网卡的用户可访问
+			// 127.0.0.1 or [::1] Listen on local loopback, only accessible by localhost users
+			// 0.0.0.0 or [::] Listen on all NICs. Users from these NICs can access
+			// ?.?.?.? or [????::????] Listen on specific NIC. Users from this NIC can access
+			"external_controller": "127.0.0.1:9090",
+			// 绝对路径或相对路径. 相对路径起始于 -D config_directory
+			// Absolute or relative path. Relative paths start with -D config_directory
+			"external_ui": "",
+			// Clash API 首次启动时默认的模式. 有 rule direct global 可用
+			// The default mode when Clash API is first started. There is rule direct global available
+			"default_mode": ""
+		}
+	}
+}
