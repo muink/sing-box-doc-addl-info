@@ -1,0 +1,27 @@
+{
+	"route": {
+		"rule_set": [
+			{
+				"type": "inline",
+				"tag": "",
+				"rules": [] // Headless Rule
+			},
+			{
+				"type": "local",
+				"tag": "",
+				"format": "source", // or binary
+				// 绝对路径或相对路径. 相对路径起始于 -D config_directory
+				// Absolute or relative path. Relative paths start with -D config_directory
+				"path": ""
+			},
+			{
+				"type": "remote",
+				"tag": "",
+				"format": "source", // or binary
+				"url": "",
+				"download_detour": "", // optional
+				"update_interval": "" // optional
+			}
+		]
+	}
+}
