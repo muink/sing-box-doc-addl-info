@@ -20,7 +20,60 @@
 				"client_subnet": ""
 			}
 		],
-		"rules": [],
+		"rules": [
+			{
+				// 凡是匹配解析结果 IP 的字段, 都是 Address Filter Fields
+				// All fields that match the resolved IP are Address Filter Fields
+				//
+				// 匹配来自指定 inbounds 的 DNS 请求
+				// Matches DNS requests from specified inbounds
+				"inbound": [
+					"mixed-in"
+				],
+				// 源 IP 为私有 IP
+				// Source IP is private IP
+				"source_ip_is_private": false,
+				// IP 为私有 IP
+				// IP is a private IP
+				"ip_is_private": false,
+				// 匹配 Clash API 当前模式. 有 rule direct global 可用
+				// Matches the current mode of the Clash API. There is rule direct global available
+				"clash_mode": "direct",
+				// 使规则集中的 `ip_cidr` 规则匹配源 IP
+				// Make `ip_cidr` rule items in rule-sets match the source IP.
+				"rule_set_ip_cidr_match_source": false,
+				// 使规则集中的 `ip_cidr` 规则接受空查询响应
+				// Make `ip_cidr` rule items in rule-sets accept empty query response.
+				// 空地址响应将被视为匹配 规则集中的 `ip_cidr` 规则
+				// Empty address responses will be treated as matching the `ip_cidr` rule in the ruleset
+				// https://github.com/SagerNet/sing-box/blob/3bb02cb2bbffbbe28623fe4b370a1be64054511b/route/rule_item_cidr.go#L90
+				"rule_set_ip_cidr_accept_empty": false,
+				// 匹配来自 outbounds 的 DNS 查询. 通常是 `.outbounds[].server` 的域名
+				// Matches DNS queries from outbounds. Usually is domains of `.outbounds[].server`
+				// 现在您可以使用 `any` 出站规则来匹配 server 地址查询, 而不必将所有 server 的域名都填写到 `domain` 规则中
+				// Now you can use the `any` outbound rule to match server address queries instead of filling in all server domains to the `domain` rule.
+				"outbound": [
+					"direct"
+				],
+				"server": "local",
+				"disable_cache": false,
+				"rewrite_ttl": 100,
+				// EDNS Client Subnet, 接受 CIDR
+				// EDNS Client Subnet, CIDR available
+				"client_subnet": "127.0.0.1/24"
+			},
+			{
+				"type": "logical",
+				"mode": "and", // or "or"
+				"rules": [], // Headless Rule
+				"server": "local",
+				"disable_cache": false,
+				"rewrite_ttl": 100,
+				// EDNS Client Subnet, 接受 CIDR
+				// EDNS Client Subnet, CIDR available
+				"client_subnet": "127.0.0.1/24"
+			}
+		],
 		"final": "",
 		"strategy": "",
 		"disable_cache": false,
