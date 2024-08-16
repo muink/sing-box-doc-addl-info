@@ -1,6 +1,34 @@
 {
 	"route": {
-		"rules": [],
+		"rules": [
+			{
+				// 匹配来自指定 inbounds 的流量
+				// Matches traffic from the specified inbounds
+				"inbound": [
+					"mixed-in"
+				],
+				// 源 IP 为私有 IP
+				// Source IP is private IP
+				"source_ip_is_private": false,
+				// IP 为私有 IP
+				// IP is a private IP
+				"ip_is_private": false,
+				// 匹配 Clash API 当前模式. 有 rule direct global 可用
+				// Matches the current mode of the Clash API. There is rule direct global available
+				"clash_mode": "direct",
+				// 使规则集中的 `ip_cidr` 规则匹配源 IP
+				// Make `ip_cidr` rule items in rule-sets match the source IP.
+				"rule_set_ip_cidr_match_source": false,
+				"outbound": "direct"
+			},
+			{
+				"type": "logical",
+				"mode": "and", // or "or"
+				"rules": [], // Headless Rule
+				"invert": false,
+				"outbound": "direct"
+			}
+		],
 		"rule_set": [], // See ruleset.josn
 		"final": "",
 		// 默认将出站连接绑定到默认网卡, 以防止在 tun 下出现路由环路
