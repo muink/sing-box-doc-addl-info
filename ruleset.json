@@ -1,5 +1,6 @@
 {
 	"route": {
+		"rules": [], // See route.josn
 		"rule_set": [
 			{
 				"type": "inline",

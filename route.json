@@ -1,0 +1,27 @@
+{
+	"route": {
+		"rules": [],
+		"rule_set": [], // See ruleset.josn
+		"final": "",
+		// 默认将出站连接绑定到默认网卡, 以防止在 tun 下出现路由环路
+		// Bind outbound connections to the default NIC by default to prevent routing loops under tun.
+		// 如果设置了 `outbound.bind_interface`, 则不生效
+		// Takes no effect if `outbound.bind_interface` is set.
+		"auto_detect_interface": false,
+		// 启用 `auto_detect_interface` 时接受 Android VPN 作为上游网卡
+		// Accept Android VPN as upstream NIC when `auto_detect_interface` enabled.
+		"override_android_vpn": false,
+		// Only supported on Linux, Windows and macOS.
+		//默认将出站连接绑定到指定网卡, 以防止在 tun 下出现路由环路
+		// Bind outbound connections to the specified NIC by default to prevent routing loops under tun.
+		// 如果设置了 `auto_detect_interface`, 则不生效
+		// Takes no effect if `auto_detect_interface` is set.
+		"default_interface": "en0",
+		// Only supported on Linux.
+		// 如果设置了 `outbound.routing_mark`, 则不生效
+		// Takes no effect if `outbound.routing_mark` is set.
+		// 出站流量的默认 fwmark
+		// Default fwmark for outbound traffic
+		"default_mark": 233
+	}
+}
