@@ -1,0 +1,21 @@
+{
+	// When `detour` not set, the following fields are available
+	// `bind_interface` / `*bind_address` / `routing_mark` / `reuse_addr` / `tcp_fast_open` / `tcp_multi_path` / `udp_fragment` / `connect_timeout`
+	"detour": "upstream-out",
+	"bind_interface": "en0",
+	"inet4_bind_address": "0.0.0.0",
+	"inet6_bind_address": "::",
+	// Only supported on Linux.
+	// 如果设置了 `outbound.routing_mark`, 则不生效
+	// Takes no effect if `outbound.routing_mark` is set.
+	// 出站流量的默认 fwmark
+	// Default fwmark for outbound traffic
+	"routing_mark": 1234,
+	"reuse_addr": false,
+	"tcp_fast_open": false,
+	"tcp_multi_path": false,
+	"udp_fragment": false,
+	"connect_timeout": "5s",
+	"domain_strategy": "prefer_ipv6",
+	"fallback_delay": "300ms"
+}
