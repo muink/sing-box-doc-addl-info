@@ -60,7 +60,10 @@
 				"rewrite_ttl": 100,
 				// EDNS Client Subnet, 接受 CIDR
 				// EDNS Client Subnet, CIDR available
-				"client_subnet": "127.0.0.1/24"
+				// ECS 功能可让您更精确地绕过就近网站. 如果使用此方法, 需要使用支持 ECS 查询的 DNS 上游
+				// The ECS feature allows you to bypass nearest websites with greater precision. Use this method you need to use an upstream DNS that supports ECS queries.
+				// Ref: https://sing-box.sagernet.org/manual/proxy/client/#__tabbed_3_2
+				"client_subnet": "223.5.5.5/24" // The IP address closest to your location
 			},
 			{
 				"type": "logical",
